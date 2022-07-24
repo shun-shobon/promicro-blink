@@ -1,0 +1,21 @@
+[package]
+name = "promicro-blink"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+panic-halt = "0.2.0"
+
+[dependencies.arduino-hal]
+git = "https://github.com/Rahix/avr-hal"
+rev = "f99550debcd9a168da4486fed4388caaee067aa9"
+features = ["sparkfun-promicro"]
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+opt-level = "s"
